@@ -87,11 +87,24 @@ export const skillCategoryCards: SkillCategoryCard[] = [
     iconName: "Wrench",
     accentColor: "#F472B6",
     skills: [
-      { name: "MERN Architecture", level: "Intermediate" },
-      { name: "WordPress Plugins", level: "Intermediate", iconName: "SiWordpress" },
+      { name: "MERN Stack", level: "Intermediate" },
+      { name: "WordPress", level: "Intermediate", iconName: "SiWordpress" },
       { name: "Git & GitHub", level: "Intermediate", iconName: "SiGit" },
       { name: "Vercel Deployment", level: "Intermediate" },
     ],
     projectHighlight: "AgnTaxConsultant.pk Corporate Site",
+  },
+  {
+    id: "soft-skills",
+    title: "Soft Skills & Leadership",
+    iconName: "Cpu",
+    accentColor: "#F59E0B",
+    skills: [
+      { name: "Problem Solving", level: "Intermediate" },
+      { name: "Project Management", level: "Intermediate" },
+      { name: "Team Collaboration", level: "Intermediate" },
+      { name: "Agile Workflow", level: "Intermediate" },
+    ],
+    projectHighlight: "Team Development & Agile Delivery",
   },
 ];

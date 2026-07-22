@@ -55,6 +55,7 @@ const filterTabs = [
   "Mobile Ecosystem",
   "Languages",
   "Tools & Workflows",
+  "Soft Skills & Leadership",
 ];
 
 export const Skills: React.FC = () => {
@@ -115,7 +116,7 @@ export const Skills: React.FC = () => {
                   : "bg-surface border border-surface-border text-foreground-muted hover:text-foreground hover:bg-surface-hover"
               }`}
             >
-              {tab === "All Stacks" ? "All Stacks (6 Cards)" : tab}
+              {tab === "All Stacks" ? "All Stacks (7 Cards)" : tab}
             </button>
           ))}
         </div>
