@@ -198,7 +198,7 @@ export const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      placeholder="John Doe"
+                      placeholder="Your Name"
                       className="w-full px-4 py-3 rounded-xl bg-background-dark border border-surface-border text-foreground text-sm focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-all"
                     />
                   </div>
@@ -215,7 +215,7 @@ export const Contact: React.FC = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      placeholder="john@example.com"
+                      placeholder="your.email@domain.com"
                       className="w-full px-4 py-3 rounded-xl bg-background-dark border border-surface-border text-foreground text-sm focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-all"
                     />
                   </div>
