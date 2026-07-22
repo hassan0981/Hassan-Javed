@@ -39,7 +39,7 @@ const educationItems = [
 
 export const Education: React.FC = () => {
   return (
-    <section id="education" className="py-24 bg-background-dark relative border-t border-surface-border/50">
+    <section id="education" className="py-24 bg-background-dark relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -53,7 +53,7 @@ export const Education: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-heading font-bold text-foreground-heading tracking-tight">
             Education &amp; Certifications
           </h2>
-          <div className="h-[1px] bg-surface-border flex-1 max-w-xs hidden sm:block" />
+          <div className="h-[1px] bg-gradient-to-r from-accent-indigo/40 to-transparent flex-1 max-w-xs hidden sm:block" />
         </motion.div>
 
         {/* Education Grid */}

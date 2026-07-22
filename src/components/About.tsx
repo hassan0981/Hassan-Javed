@@ -7,7 +7,7 @@ import { CountUp } from "./ui/CountUp";
 
 export const About: React.FC = () => {
   return (
-    <section id="about" className="py-24 bg-background-dark relative border-t border-surface-border/50">
+    <section id="about" className="py-24 bg-background-dark relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -21,7 +21,7 @@ export const About: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-heading font-bold text-foreground-heading tracking-tight">
             About Me
           </h2>
-          <div className="h-[1px] bg-surface-border flex-1 max-w-xs hidden sm:block" />
+          <div className="h-[1px] bg-gradient-to-r from-accent-indigo/40 to-transparent flex-1 max-w-xs hidden sm:block" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">

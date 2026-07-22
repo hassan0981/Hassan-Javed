@@ -71,7 +71,7 @@ export const Skills: React.FC = () => {
       : skillCategoryCards.filter((card) => card.title === activeFilter);
 
   return (
-    <section id="skills" className="py-24 bg-background-dark/95 relative border-t border-surface-border/50 overflow-hidden">
+    <section id="skills" className="py-24 bg-background-dark relative overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45rem] h-[45rem] bg-accent-indigo/10 blur-[170px] rounded-full pointer-events-none" />
 
@@ -89,7 +89,7 @@ export const Skills: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl font-heading font-bold text-foreground-heading tracking-tight">
               Skills &amp; Tech Stack
             </h2>
-            <div className="h-[1px] bg-surface-border w-24 hidden sm:block" />
+            <div className="h-[1px] bg-gradient-to-r from-accent-indigo/40 to-transparent w-24 hidden sm:block" />
           </div>
 
           <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-surface/80 border border-surface-border text-xs font-mono text-foreground-muted backdrop-blur-md">

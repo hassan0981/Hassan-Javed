@@ -7,7 +7,7 @@ import { experienceData } from "@/data/experience";
 
 export const Experience: React.FC = () => {
   return (
-    <section id="experience" className="py-24 bg-background-dark/95 relative border-t border-surface-border/50">
+    <section id="experience" className="py-24 bg-background-dark relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -21,7 +21,7 @@ export const Experience: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-heading font-bold text-foreground-heading tracking-tight">
             Work Experience
           </h2>
-          <div className="h-[1px] bg-surface-border flex-1 max-w-xs hidden sm:block" />
+          <div className="h-[1px] bg-gradient-to-r from-accent-indigo/40 to-transparent flex-1 max-w-xs hidden sm:block" />
         </motion.div>
 
         {/* Timeline Container */}

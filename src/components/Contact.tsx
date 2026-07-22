@@ -65,7 +65,7 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-background-dark/95 relative border-t border-surface-border/50">
+    <section id="contact" className="py-24 bg-background-dark relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -79,7 +79,7 @@ export const Contact: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-heading font-bold text-foreground-heading tracking-tight">
             Get In Touch
           </h2>
-          <div className="h-[1px] bg-surface-border flex-1 max-w-xs hidden sm:block" />
+          <div className="h-[1px] bg-gradient-to-r from-accent-indigo/40 to-transparent flex-1 max-w-xs hidden sm:block" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">

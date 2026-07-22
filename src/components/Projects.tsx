@@ -8,7 +8,7 @@ import { ProjectCard } from "./ProjectCard";
 
 export const Projects: React.FC = () => {
   return (
-    <section id="projects" className="py-24 bg-background-dark relative border-t border-surface-border/50">
+    <section id="projects" className="py-24 bg-background-dark relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -23,7 +23,7 @@ export const Projects: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl font-heading font-bold text-foreground-heading tracking-tight">
               Featured Projects
             </h2>
-            <div className="h-[1px] bg-surface-border w-24 hidden sm:block" />
+            <div className="h-[1px] bg-gradient-to-r from-accent-indigo/40 to-transparent w-24 hidden sm:block" />
           </div>
 
           {/* EYE-CATCHING VIDEO DEMO NOTICE BADGE */}

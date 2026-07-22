@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-background-dark border-t border-surface-border py-12 relative">
+    <footer className="bg-background-dark border-t border-surface-border/30 py-12 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Brand & Copyright */}
         <div className="flex items-center space-x-3">
