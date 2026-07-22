@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', sans-serif;
+    --font-space-grotesk: 'Space Grotesk', sans-serif;
+    --font-jetbrains-mono: 'JetBrains Mono', monospace;
+
+    /* DEFAULT THEME: DARK MODE */
+    --color-bg-dark: #0B1120;
+    --color-bg-mesh: #111827;
+    --color-surface: #161F32;
+    --color-surface-hover: #1e2b45;
+    --color-surface-border: #25324a;
+    --color-surface-highlight: #2e3f5c;
+    --color-fg-default: #E5E7EB;
+    --color-fg-heading: #F9FAFB;
+    --color-fg-muted: #94A3B8;
+    --color-accent-cyan: #22D3EE;
+    --color-accent-violet: #A78BFA;
+  }
+
+  /* OPTIONAL SWITCHABLE LIGHT MODE */
+  html.light {
+    --color-bg-dark: #F8FAFC;
+    --color-bg-mesh: #F1F5F9;
+    --color-surface: #FFFFFF;
+    --color-surface-hover: #F1F5F9;
+    --color-surface-border: #E2E8F0;
+    --color-surface-highlight: #CBD5E1;
+    --color-fg-default: #334155;
+    --color-fg-heading: #0F172A;
+    --color-fg-muted: #64748B;
+    --color-accent-cyan: #0284C7;
+    --color-accent-violet: #7C3AED;
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    background-color: var(--color-bg-dark);
+    color: var(--color-fg-default);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    background-color: rgba(99, 102, 241, 0.35);
+    color: #22D3EE;
+  }
+
+  /* Custom Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-dark);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-surface-border);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6366F1;
+  }
+}
+
+@layer utilities {
+  .shadow-glow {
+    box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.35);
+  }
+  
+  .shadow-glow-cyan {
+    box-shadow: 0 0 25px -5px rgba(34, 211, 238, 0.35);
+  }
+
+  /* Inner Card Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(22, 31, 50, 0.6);
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(34, 211, 238, 0.4);
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(34, 211, 238, 0.85);
+  }
+}
