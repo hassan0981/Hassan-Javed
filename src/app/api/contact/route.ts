@@ -4,7 +4,7 @@ import { Resend } from "resend";
 
 export const dynamic = "force-dynamic";
 
-const resend = new Resend(process.env.RESEND_API_KEY || "re_LdFPdiV3_Hnv9QPRCb4mv5PXv2HaRw1he");
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
