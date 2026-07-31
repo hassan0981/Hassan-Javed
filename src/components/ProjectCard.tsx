@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
-import { Play, ExternalLink, Github, Tv } from "lucide-react";
+import { Play, ExternalLink, Github } from "lucide-react";
 import { Project } from "@/data/projects";
 import { VideoModal } from "./VideoModal";
 
@@ -18,17 +18,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [8, -8]), { stiffness: 300, damping: 20 });
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-8, 8]), { stiffness: 300, damping: 20 });
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), { stiffness: 300, damping: 20 });
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), { stiffness: 300, damping: 20 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
+    const xPct = (e.clientX - rect.left) / rect.width - 0.5;
+    const yPct = (e.clientY - rect.top) / rect.height - 0.5;
     x.set(xPct);
     y.set(yPct);
   };
@@ -54,33 +50,22 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent-indigo/10 via-transparent to-accent-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
         <div>
-          {/* Card Top Row: Category Tag & Eye-Catching Animated Demo Trigger */}
+          {/* Card Top Row: Category Tag & Watch Demo Trigger */}
           <div className="flex items-center justify-between mb-4">
             <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-mono bg-surface-border/60 text-accent-cyan border border-surface-border">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-pulse" />
               <span>{project.featured ? "Featured Project" : "Client Project"}</span>
             </span>
 
-            {/* EYE-CATCHING PULSING WATCH DEMO BUTTON */}
-            <div className="relative inline-flex group/btn">
-              {/* Radar Ping Pulse Glow */}
-              <span className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-accent-indigo via-accent-cyan to-accent-violet opacity-75 blur-sm animate-pulse group-hover/btn:opacity-100 transition-opacity" />
-
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="relative inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-heading font-bold bg-background-dark border border-accent-cyan/60 text-accent-cyan hover:bg-gradient-to-r hover:from-accent-indigo hover:to-accent-cyan hover:text-white transition-all shadow-glow"
-                title="Watch Video Demo Walkthrough"
-              >
-                <div className="p-1 rounded-full bg-accent-cyan/20 text-accent-cyan group-hover/btn:bg-white/20 group-hover/btn:text-white transition-colors">
-                  <Play className="w-3 h-3 fill-current animate-pulse" />
-                </div>
-                <span className="tracking-wide">Watch Demo</span>
-                <span className="flex h-2 w-2 relative">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-cyan opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-cyan" />
-                </span>
-              </button>
-            </div>
+            {/* WATCH DEMO BUTTON */}
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-heading font-semibold bg-background-dark border border-accent-cyan/50 text-accent-cyan hover:bg-accent-cyan hover:text-background-dark transition-all shadow-sm group/btn"
+              title="Watch Video Demo Walkthrough"
+            >
+              <Play className="w-3 h-3 fill-current group-hover/btn:scale-110 transition-transform" />
+              <span>Watch Demo</span>
+            </button>
           </div>
 
           {/* Title & Subtitle */}
@@ -90,79 +75,58 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           <p className="text-xs font-mono text-accent-violet mb-3">{project.subtitle}</p>
 
           {/* Description */}
-          <p className="text-sm text-foreground-muted mb-4 leading-relaxed line-clamp-3">
+          <p className="text-sm text-foreground-muted mb-4 leading-relaxed">
             {project.description}
           </p>
 
-          {/* Key Highlights */}
+          {/* Highlights */}
           <ul className="mb-6 space-y-1.5">
             {project.highlights.map((h, i) => (
-              <li key={i} className="flex items-start text-xs text-foreground/90">
-                <span className="mr-2 text-accent-emerald">▹</span>
+              <li key={i} className="flex items-start text-xs text-foreground/90 font-mono">
+                <span className="mr-2 text-accent-cyan">▹</span>
                 <span>{h}</span>
               </li>
             ))}
           </ul>
-
-          {/* Hover Banner Prompt for Video Walkthrough */}
-          <div
-            onClick={() => setIsModalOpen(true)}
-            className="mb-4 p-2.5 rounded-xl bg-surface-hover/80 border border-surface-border/80 hover:border-accent-cyan/60 transition-all flex items-center justify-between text-xs font-mono text-foreground-muted hover:text-accent-cyan cursor-pointer group/banner"
-          >
-            <span className="flex items-center space-x-2">
-              <Tv className={`w-4 h-4 ${project.videoId ? "text-accent-cyan" : "text-amber-400"} group-hover/banner:scale-110 transition-transform`} />
-              <span className="font-semibold text-foreground group-hover/banner:text-accent-cyan">
-                {project.videoId ? "Video Walkthrough Attached" : "Demo Video (Not Uploaded)"}
-              </span>
-            </span>
-            <span className="text-accent-indigo group-hover/banner:translate-x-1 transition-transform">
-              {project.videoId ? "Play ▶" : "Info ℹ"}
-            </span>
-          </div>
         </div>
 
-        {/* Footer: Tech Stack Pills & External Links */}
-        <div className="pt-4 border-t border-surface-border/60">
-          <div className="flex flex-wrap gap-1.5 mb-4">
+        {/* Footer: Tech Stack Badges & External Links */}
+        <div className="pt-4 border-t border-surface-border/60 flex items-center justify-between gap-3">
+          <div className="flex flex-wrap gap-1.5">
             {project.techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-2.5 py-0.5 rounded-md text-[11px] font-mono bg-surface-hover/80 text-foreground-muted border border-surface-border/50"
+                className="px-2.5 py-0.5 rounded-md text-[11px] font-mono bg-surface-hover/90 text-foreground-muted border border-surface-border/50"
               >
                 {tech}
               </span>
             ))}
           </div>
 
-          <div className="flex items-center justify-between text-xs text-foreground-muted">
-            <span className="font-mono text-[10px] text-foreground-muted/60">
-              Demo ID: <code className="text-accent-indigo">{project.videoId || "Not Uploaded"}</code>
-            </span>
-
-            <div className="flex items-center space-x-3">
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 rounded-lg hover:text-accent-cyan hover:bg-surface-border transition-colors"
-                  aria-label="GitHub Repository"
-                >
-                  <Github className="w-4 h-4" />
-                </a>
-              )}
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 rounded-lg hover:text-accent-cyan hover:bg-surface-border transition-colors"
-                  aria-label="Live Demo Website"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              )}
-            </div>
+          {/* Social Links */}
+          <div className="flex items-center space-x-2 shrink-0">
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 rounded-lg text-foreground-muted hover:text-accent-cyan hover:bg-surface-border transition-colors"
+                aria-label="GitHub Repository"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+            )}
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 rounded-lg text-foreground-muted hover:text-accent-cyan hover:bg-surface-border transition-colors"
+                aria-label="Live Demo Website"
+              >
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            )}
           </div>
         </div>
       </motion.div>

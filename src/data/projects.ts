@@ -21,14 +21,13 @@ export const projectsData: Project[] = [
     title: "Mashhoor",
     subtitle: "AI-Powered Influencer Marketing Platform",
     description:
-      "Full-stack MERN platform enabling Pakistani startups and SMEs to discover genuine influencers and eliminate influencer fraud through AI metrics.",
+      "Full-stack MERN platform enabling Pakistani startups to discover genuine influencers and eliminate influencer fraud.",
     highlights: [
-      "Trust Score fake-follower detection & engagement analysis",
-      "AI ROI prediction engine for campaign planning",
-      "Automated outreach AI chatbot & sentiment analysis on responses",
+      "Fake-follower detection & Trust Score analytics",
+      "Automated AI campaign planning & outreach",
     ],
     techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "Python", "Tailwind CSS"],
-    videoId: "tdxSkjveZJE", // Real Mashhoor project demo video
+    videoId: "tdxSkjveZJE",
     featured: true,
   },
   {
@@ -36,11 +35,10 @@ export const projectsData: Project[] = [
     title: "BouncyDigital.com",
     subtitle: "Modern Digital Agency Web Application",
     description:
-      "High-performance company portfolio & client portal built with Next.js App Router and Supabase, featuring dynamic blog publishing and automated lead routing.",
+      "High-performance company portfolio & client portal built with Next.js App Router and Supabase.",
     highlights: [
-      "Supabase backend powering blog content and client inquiries",
-      "Automated SMTP email notifications for instant lead alerts",
-      "Lighthouse 95+ score with edge rendering & dark mode UI",
+      "Supabase backend powering blogs & client leads",
+      "Automated SMTP notifications & 95+ Lighthouse score",
     ],
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "Framer Motion"],
     videoId: "cAgXwHUA6pc",
@@ -52,14 +50,13 @@ export const projectsData: Project[] = [
     title: "AgnTaxConsultant.pk",
     subtitle: "Tax Consultancy Corporate Web Portal",
     description:
-      "Mobile-responsive corporate portal for an established tax consultancy firm in Pakistan, integrated with custom plugins and instant client communication.",
+      "Mobile-responsive corporate portal for an established tax consultancy firm in Pakistan.",
     highlights: [
-      "Custom WordPress plugin configuration for tax calculator & form handling",
-      "Direct WhatsApp Business API integration for one-click client inquiries",
-      "Fully responsive, mobile-first design with client appointment scheduling",
+      "Custom WordPress tax calculator plugin",
+      "Direct client inquiry & appointment scheduling system",
     ],
-    techStack: ["WordPress", "PHP", "JavaScript", "Custom CSS", "WhatsApp API"],
-    videoId: "B4_pSd4-DZs", // Real AgnTaxConsultant project demo video
+    techStack: ["WordPress", "PHP", "JavaScript", "Custom CSS"],
+    videoId: "B4_pSd4-DZs",
     liveUrl: "https://agntaxconsultant.pk",
     featured: true,
   },
@@ -68,11 +65,10 @@ export const projectsData: Project[] = [
     title: "Email Spam Detector",
     subtitle: "Machine Learning Classification System",
     description:
-      "Intelligent statistical machine learning pipeline designed to analyze email text body and headers, classifying spam vs legitimate emails with high accuracy.",
+      "Intelligent statistical machine learning pipeline analyzing email content to classify spam vs legitimate emails.",
     highlights: [
-      "TF-IDF vectorization & Naive Bayes / SVM classifier models",
-      "Real-time text preprocessing, tokenization, and stop-word filtering",
-      "Interactive evaluation dashboard for precision, recall, and F1-score",
+      "TF-IDF vectorization & Naive Bayes / SVM models",
+      "Interactive Streamlit metrics dashboard",
     ],
     techStack: ["Python", "Scikit-Learn", "NLTK", "Pandas", "Streamlit"],
     featured: false,
@@ -80,15 +76,14 @@ export const projectsData: Project[] = [
   {
     id: "pet-care-tracker",
     title: "Pet Care Tracker",
-    subtitle: "Native Android Pet Health & Medical History App",
+    subtitle: "Native Android Pet Health App",
     description:
-      "Feature-rich Android application designed for pet owners to log, track, and monitor pet health metrics, vaccination dates, and medical history.",
+      "Feature-rich Android mobile app for pet owners to log and monitor pet health metrics and medical history.",
     highlights: [
-      "Role-based authentication & real-time synchronization with Firebase",
-      "Disease tracking, medical log search, and automated checkup reminders",
-      "Intuitive mobile native UI built with Java & Android SDK",
+      "Firebase authentication & real-time sync",
+      "Automated checkup reminders & medical search",
     ],
-    techStack: ["Java", "Android SDK", "Firebase", "Firestore", "XML Layouts"],
+    techStack: ["Java", "Android SDK", "Firebase", "Firestore"],
     featured: false,
   },
 ];

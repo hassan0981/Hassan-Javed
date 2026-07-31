@@ -18,7 +18,11 @@ import {
   SiWordpress,
   SiGit,
   SiExpo,
+  SiHtml5,
+  SiGithub,
+  SiMysql,
 } from "react-icons/si";
+import { FaJava } from "react-icons/fa";
 import { skillCategoryCards, SkillCategoryCard, SkillItem } from "@/data/skills";
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -28,6 +32,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Smartphone: <Smartphone className="w-5 h-5 text-accent-violet" />,
   Code: <Code className="w-5 h-5 text-sky-400" />,
   Wrench: <Wrench className="w-5 h-5 text-pink-400" />,
+  Layers: <Layers className="w-5 h-5 text-teal-400" />,
 };
 
 const brandIconMap: Record<string, React.ReactNode> = {
@@ -45,17 +50,20 @@ const brandIconMap: Record<string, React.ReactNode> = {
   SiWordpress: <SiWordpress className="w-3.5 h-3.5 text-[#21759B]" />,
   SiGit: <SiGit className="w-3.5 h-3.5 text-[#F05032]" />,
   SiExpo: <SiExpo className="w-3.5 h-3.5 text-white" />,
+  SiJava: <FaJava className="w-3.5 h-3.5 text-[#ED8B00]" />,
+  SiHtml5: <SiHtml5 className="w-3.5 h-3.5 text-[#E34F26]" />,
+  SiGithub: <SiGithub className="w-3.5 h-3.5 text-white" />,
+  SiMysql: <SiMysql className="w-3.5 h-3.5 text-[#4479A1]" />,
 };
 
 const filterTabs = [
   "All Stacks",
-  "Frontend Development",
-  "Backend Development",
-  "Databases & Cloud",
-  "Mobile Ecosystem",
-  "Languages",
-  "Tools & Workflows",
-  "Soft Skills & Leadership",
+  "Programming Languages",
+  "Front-end Development",
+  "Backend & Databases",
+  "Web Development / Stacks",
+  "Mobile App Development",
+  "Tools & Version Control",
 ];
 
 export const Skills: React.FC = () => {
@@ -116,7 +124,7 @@ export const Skills: React.FC = () => {
                   : "bg-surface border border-surface-border text-foreground-muted hover:text-foreground hover:bg-surface-hover"
               }`}
             >
-              {tab === "All Stacks" ? "All Stacks (7 Cards)" : tab}
+              {tab === "All Stacks" ? "All Stacks (6 Cards)" : tab}
             </button>
           ))}
         </div>

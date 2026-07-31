@@ -8,47 +8,47 @@
     --font-space-grotesk: 'Space Grotesk', sans-serif;
     --font-jetbrains-mono: 'JetBrains Mono', monospace;
 
-    /* DEFAULT THEME: DARK MODE */
-    --color-bg-dark: #0B1120;
-    --color-bg-mesh: #111827;
-    --color-surface: #161F32;
-    --color-surface-hover: #1e2b45;
-    --color-surface-border: #25324a;
-    --color-surface-highlight: #2e3f5c;
-    --color-fg-default: #E5E7EB;
-    --color-fg-heading: #F9FAFB;
-    --color-fg-muted: #94A3B8;
-    --color-accent-cyan: #22D3EE;
-    --color-accent-violet: #A78BFA;
+    /* DEFAULT THEME: DARK TEAL MODE (#1E4E6B Palette) */
+    --color-bg-dark: #07141E;
+    --color-bg-mesh: #0B1B28;
+    --color-surface: #0F2434;
+    --color-surface-hover: #163246;
+    --color-surface-border: #1E4E6B;
+    --color-surface-highlight: #29658A;
+    --color-fg-default: #E2E8F0;
+    --color-fg-heading: #F8FAFC;
+    --color-fg-muted: #80A3BD;
+    --color-accent-cyan: #2DD4BF;
+    --color-accent-violet: #38BDF8;
   }
 
-  /* OPTIONAL SWITCHABLE LIGHT MODE */
+  /* SWITCHABLE SECONDARY THEME: BRIGHT ICE WHITE WITH CYAN ACCENT (#5EC8F0) & NAVY TYPOGRAPHY */
   html.light {
-    --color-bg-dark: #F8FAFC;
-    --color-bg-mesh: #F1F5F9;
+    --color-bg-dark: #F5FAFD;
+    --color-bg-mesh: #EAF5FA;
     --color-surface: #FFFFFF;
-    --color-surface-hover: #F1F5F9;
-    --color-surface-border: #E2E8F0;
-    --color-surface-highlight: #CBD5E1;
-    --color-fg-default: #334155;
-    --color-fg-heading: #0F172A;
-    --color-fg-muted: #64748B;
-    --color-accent-cyan: #0284C7;
-    --color-accent-violet: #7C3AED;
+    --color-surface-hover: #E3F3FA;
+    --color-surface-border: #BBE3F7;
+    --color-surface-highlight: #5EC8F0;
+    --color-fg-default: #133854;
+    --color-fg-heading: #091D2C;
+    --color-fg-muted: #3D627D;
+    --color-accent-cyan: #5EC8F0;
+    --color-accent-violet: #0284C7;
+    --color-accent-indigo: #006D9C;
     color-scheme: light;
   }
 
-  html {
-    scroll-behavior: smooth;
-    color-scheme: dark;
-    background-color: var(--color-bg-dark);
-    color: var(--color-fg-default);
-    transition: background-color 0.3s ease, color 0.3s ease;
+  html.light,
+  html.light body {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F0F9FE 40%, #E2F3FA 75%, #D4EEF8 100%) !important;
+    background-attachment: fixed !important;
+    color: var(--color-fg-default) !important;
   }
 
-  ::selection {
-    background-color: rgba(99, 102, 241, 0.35);
-    color: #22D3EE;
+  html.light ::selection {
+    background-color: rgba(94, 200, 240, 0.45);
+    color: #08263B;
   }
 
   /* Custom Scrollbar styling */
@@ -66,17 +66,17 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #6366F1;
+    background: #5EC8F0;
   }
 }
 
 @layer utilities {
   .shadow-glow {
-    box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.35);
+    box-shadow: 0 0 25px -5px rgba(30, 78, 107, 0.45);
   }
   
   .shadow-glow-cyan {
-    box-shadow: 0 0 25px -5px rgba(34, 211, 238, 0.35);
+    box-shadow: 0 0 25px -5px rgba(45, 212, 191, 0.45);
   }
 
   /* Inner Card Custom Scrollbar */
@@ -84,14 +84,60 @@
     width: 4px;
   }
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(22, 31, 50, 0.6);
+    background: rgba(15, 36, 52, 0.6);
     border-radius: 4px;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(34, 211, 238, 0.4);
+    background: rgba(30, 78, 107, 0.7);
     border-radius: 4px;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(34, 211, 238, 0.85);
+    background: rgba(45, 212, 191, 0.85);
+  }
+
+  /* BRIGHT LIGHT MODE WITH CYAN (#5EC8F0) & DARK NAVY CONTRAST */
+  html.light .shadow-glow {
+    box-shadow: 0 0 25px -5px rgba(94, 200, 240, 0.55);
+  }
+
+  html.light .shadow-glow-cyan {
+    box-shadow: 0 0 25px -5px rgba(94, 200, 240, 0.65);
+  }
+
+  html.light .shadow-card-hover {
+    box-shadow: 0 10px 30px -10px rgba(94, 200, 240, 0.25), 0 0 20px 0 rgba(94, 200, 240, 0.15);
+  }
+
+  /* BUTTONS GRADIENT (#5EC8F0 CYAN TO DEEP NAVY CONTRAST) */
+  html.light .bg-gradient-to-r.from-accent-indigo,
+  html.light .bg-gradient-to-r.from-accent-indigo.to-accent-cyan {
+    background-image: linear-gradient(to right, #0077B6, #5EC8F0) !important;
+    color: #FFFFFF !important;
+  }
+
+  html.light .bg-gradient-to-tr.from-accent-indigo {
+    background-image: linear-gradient(to top right, #0077B6, #5EC8F0) !important;
+  }
+
+  /* NAV PILLS (#5EC8F0 CYAN & CRISP WHITE GLASS) */
+  html.light nav {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-color: #BBE3F7 !important;
+    box-shadow: 0 4px 20px rgba(94, 200, 240, 0.25) !important;
+  }
+
+  html.light .bg-surface-hover {
+    background-color: #EBF7FC !important;
+  }
+
+  /* STAT NUMBERS ENHANCEMENTS (#5EC8F0) */
+  html.light .text-accent-indigo {
+    color: #0077B6 !important;
+  }
+  html.light .text-accent-cyan {
+    color: #0096C7 !important;
+  }
+  html.light .text-accent-violet {
+    color: #0284C7 !important;
   }
 }

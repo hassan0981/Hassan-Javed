@@ -60,6 +60,8 @@ export const ParticleBackground: React.FC = () => {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
+      const isLightMode = document.documentElement.classList.contains("light");
+
       // Draw subtle connections
       for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
@@ -75,10 +77,12 @@ export const ParticleBackground: React.FC = () => {
         // Draw particle dot
         ctx.beginPath();
         ctx.arc(p1.x, p1.y, p1.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(99, 102, 241, ${p1.alpha * 0.8})`;
+        ctx.fillStyle = isLightMode
+          ? `rgba(94, 200, 240, ${p1.alpha * 0.95})`
+          : `rgba(30, 78, 107, ${p1.alpha * 0.9})`;
         ctx.fill();
 
-        // Connect with nearby particles
+        // Connect with nearby particles using wireframe lines (#5EC8F0 in Light, #1E4E6B in Dark)
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dx = p1.x - p2.x;
@@ -89,8 +93,10 @@ export const ParticleBackground: React.FC = () => {
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(34, 211, 238, ${0.15 * (1 - dist / 130)})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = isLightMode
+              ? `rgba(94, 200, 240, ${0.45 * (1 - dist / 130)})`
+              : `rgba(30, 78, 107, ${0.4 * (1 - dist / 130)})`;
+            ctx.lineWidth = 0.9;
             ctx.stroke();
           }
         }
@@ -103,7 +109,9 @@ export const ParticleBackground: React.FC = () => {
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(mouseX, mouseY);
-          ctx.strokeStyle = `rgba(167, 139, 250, ${0.3 * (1 - mdist / 160)})`;
+          ctx.strokeStyle = isLightMode
+            ? `rgba(32, 164, 214, ${0.5 * (1 - mdist / 160)})`
+            : `rgba(45, 212, 191, ${0.45 * (1 - mdist / 160)})`;
           ctx.lineWidth = 1;
           ctx.stroke();
         }
@@ -123,13 +131,13 @@ export const ParticleBackground: React.FC = () => {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Background glowing aurora mesh gradients */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-accent-indigo/20 blur-[120px] pointer-events-none animate-pulse" />
-      <div className="absolute top-1/3 -right-40 w-[30rem] h-[30rem] rounded-full bg-accent-cyan/15 blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-1/4 w-[28rem] h-[28rem] rounded-full bg-accent-violet/15 blur-[130px] pointer-events-none" />
+      {/* Background glowing aurora mesh gradients using Teal #1E4E6B & Cyan #5EC8F0 theme */}
+      <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-accent-cyan/30 blur-[120px] pointer-events-none animate-pulse" />
+      <div className="absolute top-1/3 -right-40 w-[30rem] h-[30rem] rounded-full bg-accent-cyan/20 blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 left-1/4 w-[28rem] h-[28rem] rounded-full bg-accent-violet/25 blur-[130px] pointer-events-none" />
       
       {/* Canvas particle network */}
-      <canvas ref={canvasRef} className="block w-full h-full opacity-60" />
+      <canvas ref={canvasRef} className="block w-full h-full opacity-75" />
     </div>
   );
 };

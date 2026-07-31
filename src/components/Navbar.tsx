@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Download, Code2, Sparkles, Sun, Moon } from "lucide-react";
+import { Menu, X, Download, Code2, Send, Sun, Moon } from "lucide-react";
 import { MagneticButton } from "./ui/MagneticButton";
 
 const navLinks = [
@@ -150,7 +150,7 @@ export const Navbar: React.FC = () => {
               href="#contact"
               className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-accent-indigo via-accent-cyan to-accent-violet text-white text-xs font-mono font-medium shadow-glow hover:brightness-110 transition-all"
             >
-              <Sparkles className="w-3.5 h-3.5" />
+              <Send className="w-3.5 h-3.5" />
               <span>Get In Touch</span>
             </a>
           </MagneticButton>

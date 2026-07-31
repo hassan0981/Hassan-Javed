@@ -21,7 +21,7 @@ const config: Config = {
       highlight: "var(--color-surface-highlight)",
     },
     accent: {
-      indigo: "#6366F1",
+      indigo: "#1E4E6B",
       cyan: "var(--color-accent-cyan)",
       violet: "var(--color-accent-violet)",
       emerald: "#34D399",
@@ -58,9 +58,9 @@ const config: Config = {
         },
       },
       boxShadow: {
-        glow: "0 0 25px -5px rgba(99, 102, 241, 0.3)",
-        "glow-cyan": "0 0 25px -5px rgba(34, 211, 238, 0.3)",
-        "card-hover": "0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px 0 rgba(99, 102, 241, 0.25)",
+        glow: "0 0 25px -5px rgba(30, 78, 107, 0.5)",
+        "glow-cyan": "0 0 25px -5px rgba(45, 212, 191, 0.45)",
+        "card-hover": "0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px 0 rgba(30, 78, 107, 0.4)",
       },
     },
   },
