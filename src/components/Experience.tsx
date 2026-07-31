@@ -64,15 +64,11 @@ export const Experience: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="text-sm text-foreground-muted mb-4 leading-relaxed">
-                  {item.description}
-                </p>
-
                 {/* Bullets */}
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-2 mb-4">
                   {item.bullets.map((bullet, i) => (
-                    <li key={i} className="flex items-start text-xs sm:text-sm text-foreground/90">
-                      <CheckCircle className="w-4 h-4 text-accent-emerald shrink-0 mr-2.5 mt-0.5" />
+                    <li key={i} className="flex items-start text-xs sm:text-sm text-foreground/90 font-mono">
+                      <CheckCircle className="w-4 h-4 text-accent-cyan shrink-0 mr-2.5 mt-0.5" />
                       <span>{bullet}</span>
                     </li>
                   ))}

@@ -28,6 +28,7 @@ export const projectsData: Project[] = [
     ],
     techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "Python", "Tailwind CSS"],
     videoId: "tdxSkjveZJE",
+    liveUrl: "https://mashhoor-frontend.vercel.app/",
     featured: true,
   },
   {

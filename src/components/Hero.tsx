@@ -210,7 +210,7 @@ export const Hero: React.FC = () => {
               <div className="relative mb-8 group/photo">
                 {/* Radar Ring Glow behind avatar */}
                 <div className="absolute -inset-1.5 rounded-full bg-gradient-to-r from-accent-indigo via-accent-cyan to-accent-violet opacity-75 blur-md group-hover/photo:opacity-100 animate-pulse transition-opacity" />
-                
+
                 {/* Circular Image Container */}
                 <div className="relative w-44 h-44 rounded-full overflow-hidden p-1.5 bg-gradient-to-tr from-accent-indigo to-accent-cyan border border-accent-cyan/40 shadow-glow">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
