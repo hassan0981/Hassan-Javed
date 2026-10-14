@@ -80,7 +80,7 @@ export const ParticleBackground: React.FC = () => {
       mouseX += (targetMouseX - mouseX) * 0.08;
       mouseY += (targetMouseY - mouseY) * 0.08;
 
-      const isLightMode = document.documentElement.classList.contains("light");
+      const isLightMode = !document.documentElement.classList.contains("dark");
 
       const cols = Math.floor(width / gridSpacing) + 2;
       const rows = Math.floor(height / gridSpacing) + 2;

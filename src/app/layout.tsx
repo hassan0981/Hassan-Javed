@@ -69,11 +69,16 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  var saved = localStorage.getItem('theme');
+                  if (localStorage.getItem('theme') === 'dark' && !localStorage.getItem('mhj_theme_pref')) {
+                    localStorage.removeItem('theme');
+                  }
+                  var saved = localStorage.getItem('mhj_theme_pref');
                   if (saved === 'dark') {
                     document.documentElement.classList.remove('light');
+                    document.documentElement.classList.add('dark');
                   } else {
                     document.documentElement.classList.add('light');
+                    document.documentElement.classList.remove('dark');
                   }
                 } catch (e) {}
               })();

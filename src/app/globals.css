@@ -8,22 +8,23 @@
     --font-space-grotesk: 'Space Grotesk', sans-serif;
     --font-jetbrains-mono: 'JetBrains Mono', monospace;
 
-    /* DEFAULT THEME: DARK TEAL MODE (#1E4E6B Palette) */
-    --color-bg-dark: #07141E;
-    --color-bg-mesh: #0B1B28;
-    --color-surface: #0F2434;
-    --color-surface-hover: #163246;
-    --color-surface-border: #1E4E6B;
-    --color-surface-highlight: #29658A;
-    --color-fg-default: #E2E8F0;
-    --color-fg-heading: #F8FAFC;
-    --color-fg-muted: #80A3BD;
-    --color-accent-cyan: #2DD4BF;
-    --color-accent-violet: #38BDF8;
-    --color-accent-indigo: #1E4E6B;
+    /* PRIMARY DEFAULT THEME: WARM EDITORIAL BEIGE & SAND (LIGHT/BALANCED) */
+    --color-bg-dark: #DFD5C4;
+    --color-bg-mesh: #D5C9B5;
+    --color-surface: #F4EFE6;
+    --color-surface-hover: #E9E1D2;
+    --color-surface-border: #C8BAA3;
+    --color-surface-highlight: #AE9E86;
+    --color-fg-default: #261E17;
+    --color-fg-heading: #16110D;
+    --color-fg-muted: #5E5143;
+    --color-accent-cyan: #0C6477;
+    --color-accent-violet: #3E4A5C;
+    --color-accent-indigo: #163042;
+    color-scheme: light;
   }
 
-  /* SWITCHABLE SECONDARY THEME: WARM EDITORIAL BEIGE & SAND (LIGHT/BALANCED) */
+  /* WARM EDITORIAL BEIGE (LIGHT EXPLICIT) */
   html.light {
     --color-bg-dark: #DFD5C4;
     --color-bg-mesh: #D5C9B5;
@@ -40,16 +41,45 @@
     color-scheme: light;
   }
 
-  html.light,
-  html.light body {
+  /* SWITCHABLE SECONDARY THEME: DARK TEAL MODE (#1E4E6B Palette) */
+  html.dark {
+    --color-bg-dark: #07141E;
+    --color-bg-mesh: #0B1B28;
+    --color-surface: #0F2434;
+    --color-surface-hover: #163246;
+    --color-surface-border: #1E4E6B;
+    --color-surface-highlight: #29658A;
+    --color-fg-default: #E2E8F0;
+    --color-fg-heading: #F8FAFC;
+    --color-fg-muted: #80A3BD;
+    --color-accent-cyan: #2DD4BF;
+    --color-accent-violet: #38BDF8;
+    --color-accent-indigo: #1E4E6B;
+    color-scheme: dark;
+  }
+
+  html,
+  body {
     background: linear-gradient(135deg, #EAE2D5 0%, #DFD5C4 50%, #D4C7B4 100%) !important;
     min-height: 100vh;
     color: var(--color-fg-default) !important;
   }
 
-  html.light ::selection {
+  html.dark,
+  html.dark body {
+    background: var(--color-bg-dark) !important;
+    color: var(--color-fg-default) !important;
+  }
+
+  html.light ::selection,
+  ::selection {
     background-color: rgba(12, 100, 119, 0.22);
     color: #16110D;
+  }
+
+  html.dark ::selection {
+    background-color: rgba(45, 212, 191, 0.25);
+    color: #F8FAFC;
   }
 
   /* Custom Scrollbar styling */

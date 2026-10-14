@@ -20,15 +20,26 @@ export const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState("");
   const [theme, setTheme] = useState<"dark" | "light">("light");
 
+  const THEME_STORAGE_KEY = "mhj_theme_pref";
+
   useEffect(() => {
-    // Sync stored theme preference (Default is bright/light mode)
-    const savedTheme = localStorage.getItem("theme") as "dark" | "light" | null;
+    // Clean up legacy test key so visitors unconditionally default to bright mode
+    try {
+      if (localStorage.getItem("theme") === "dark" && !localStorage.getItem(THEME_STORAGE_KEY)) {
+        localStorage.removeItem("theme");
+      }
+    } catch (e) {}
+
+    // Sync stored theme preference (Default is unconditionally Bright/Warm Editorial Beige theme)
+    const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) as "dark" | "light" | null;
     if (savedTheme === "dark") {
       setTheme("dark");
       document.documentElement.classList.remove("light");
+      document.documentElement.classList.add("dark");
     } else {
       setTheme("light");
       document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
     }
 
     let ticking = false;
@@ -62,11 +73,17 @@ export const Navbar: React.FC = () => {
     if (theme === "light") {
       setTheme("dark");
       document.documentElement.classList.remove("light");
-      localStorage.setItem("theme", "dark");
+      document.documentElement.classList.add("dark");
+      try {
+        localStorage.setItem(THEME_STORAGE_KEY, "dark");
+      } catch (e) {}
     } else {
       setTheme("light");
       document.documentElement.classList.add("light");
-      localStorage.setItem("theme", "light");
+      document.documentElement.classList.remove("dark");
+      try {
+        localStorage.setItem(THEME_STORAGE_KEY, "light");
+      } catch (e) {}
     }
   };
 
