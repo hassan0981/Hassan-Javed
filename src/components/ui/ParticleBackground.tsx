@@ -28,8 +28,8 @@ export const ParticleBackground: React.FC = () => {
     let isVisible = true;
     let isRunning = false;
 
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    let width = (canvas.width = container.offsetWidth || window.innerWidth);
+    let height = (canvas.height = container.offsetHeight || window.innerHeight);
 
     let mouseX = width / 2;
     let mouseY = height / 2;
@@ -37,14 +37,16 @@ export const ParticleBackground: React.FC = () => {
     let targetMouseY = height / 2;
 
     const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      if (!canvas || !container) return;
+      width = canvas.width = container.offsetWidth || window.innerWidth;
+      height = canvas.height = container.offsetHeight || window.innerHeight;
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      targetMouseX = e.clientX;
-      targetMouseY = e.clientY;
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      targetMouseX = e.clientX - rect.left;
+      targetMouseY = e.clientY - rect.top;
     };
 
     window.addEventListener("resize", handleResize, { passive: true });
@@ -85,34 +87,34 @@ export const ParticleBackground: React.FC = () => {
       const cols = Math.floor(width / gridSpacing) + 2;
       const rows = Math.floor(height / gridSpacing) + 2;
 
-      // 1. Draw Cyber Kinetic Grid
+      // 1. Draw Cyber Kinetic Grid with cursor proximity darkening
       for (let c = 0; c <= cols; c++) {
         const baseX = c * gridSpacing;
         const distToMouseX = Math.abs(baseX - mouseX);
-        const intensity = Math.max(0, 1 - distToMouseX / 250);
+        const intensity = Math.max(0, 1 - distToMouseX / 260);
 
         ctx.beginPath();
         ctx.moveTo(baseX, 0);
         ctx.lineTo(baseX, height);
         ctx.strokeStyle = isLightMode
-          ? `rgba(130, 110, 85, ${0.1 + intensity * 0.2})`
+          ? `rgba(75, 62, 50, ${0.12 + intensity * 0.35})`
           : `rgba(30, 78, 107, ${0.16 + intensity * 0.25})`;
-        ctx.lineWidth = intensity > 0.2 ? 1.1 : 0.75;
+        ctx.lineWidth = intensity > 0.15 ? 1.25 : 0.75;
         ctx.stroke();
       }
 
       for (let r = 0; r <= rows; r++) {
         const baseY = r * gridSpacing;
         const distToMouseY = Math.abs(baseY - mouseY);
-        const intensity = Math.max(0, 1 - distToMouseY / 250);
+        const intensity = Math.max(0, 1 - distToMouseY / 260);
 
         ctx.beginPath();
         ctx.moveTo(0, baseY);
         ctx.lineTo(width, baseY);
         ctx.strokeStyle = isLightMode
-          ? `rgba(130, 110, 85, ${0.1 + intensity * 0.2})`
+          ? `rgba(75, 62, 50, ${0.12 + intensity * 0.35})`
           : `rgba(30, 78, 107, ${0.16 + intensity * 0.25})`;
-        ctx.lineWidth = intensity > 0.2 ? 1.1 : 0.75;
+        ctx.lineWidth = intensity > 0.15 ? 1.25 : 0.75;
         ctx.stroke();
       }
 
@@ -127,8 +129,8 @@ export const ParticleBackground: React.FC = () => {
 
           const grad = ctx.createLinearGradient(p.x - p.length, p.y, p.x, p.y);
           if (isLightMode) {
-            grad.addColorStop(0, "rgba(186, 140, 85, 0)");
-            grad.addColorStop(1, "rgba(186, 140, 85, 0.7)");
+            grad.addColorStop(0, "rgba(12, 100, 119, 0)");
+            grad.addColorStop(1, "rgba(12, 100, 119, 0.85)");
           } else {
             grad.addColorStop(0, "rgba(45, 212, 191, 0)");
             grad.addColorStop(1, "rgba(45, 212, 191, 0.8)");
@@ -142,8 +144,8 @@ export const ParticleBackground: React.FC = () => {
 
           // Glowing pulse head
           ctx.beginPath();
-          ctx.arc(p.x, p.y, 2.2, 0, Math.PI * 2);
-          ctx.fillStyle = isLightMode ? "#B87E3E" : "#2DD4BF";
+          ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = isLightMode ? "#0C6477" : "#2DD4BF";
           ctx.fill();
         } else {
           p.y += p.speed;
@@ -154,8 +156,8 @@ export const ParticleBackground: React.FC = () => {
 
           const grad = ctx.createLinearGradient(p.x, p.y - p.length, p.x, p.y);
           if (isLightMode) {
-            grad.addColorStop(0, "rgba(186, 140, 85, 0)");
-            grad.addColorStop(1, "rgba(186, 140, 85, 0.7)");
+            grad.addColorStop(0, "rgba(12, 100, 119, 0)");
+            grad.addColorStop(1, "rgba(12, 100, 119, 0.85)");
           } else {
             grad.addColorStop(0, "rgba(45, 212, 191, 0)");
             grad.addColorStop(1, "rgba(45, 212, 191, 0.8)");
@@ -169,17 +171,18 @@ export const ParticleBackground: React.FC = () => {
 
           // Glowing pulse head
           ctx.beginPath();
-          ctx.arc(p.x, p.y, 2.2, 0, Math.PI * 2);
-          ctx.fillStyle = isLightMode ? "#B87E3E" : "#2DD4BF";
+          ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = isLightMode ? "#0C6477" : "#2DD4BF";
           ctx.fill();
         }
       });
 
-      // 3. Draw Intersecting Node Dots Near Cursor (Bounding Box Optimized - only ~16 points checked)
-      const minC = Math.max(0, Math.floor((mouseX - 180) / gridSpacing));
-      const maxC = Math.min(cols, Math.ceil((mouseX + 180) / gridSpacing));
-      const minR = Math.max(0, Math.floor((mouseY - 180) / gridSpacing));
-      const maxR = Math.min(rows, Math.ceil((mouseY + 180) / gridSpacing));
+      // 3. Draw Intersecting Node Dots Near Cursor & Constellation Lines (Dark & High Contrast)
+      const cursorRadius = 210;
+      const minC = Math.max(0, Math.floor((mouseX - cursorRadius) / gridSpacing));
+      const maxC = Math.min(cols, Math.ceil((mouseX + cursorRadius) / gridSpacing));
+      const minR = Math.max(0, Math.floor((mouseY - cursorRadius) / gridSpacing));
+      const maxR = Math.min(rows, Math.ceil((mouseY + cursorRadius) / gridSpacing));
 
       for (let c = minC; c <= maxC; c++) {
         for (let r = minR; r <= maxR; r++) {
@@ -190,29 +193,57 @@ export const ParticleBackground: React.FC = () => {
           const dy = gy - mouseY;
           const distSq = dx * dx + dy * dy;
 
-          if (distSq < 32400) {
+          if (distSq < cursorRadius * cursorRadius) {
             const dist = Math.sqrt(distSq);
-            const factor = 1 - dist / 180;
-            const size = 1.5 + factor * 3;
+            const factor = 1 - dist / cursorRadius;
+            const size = 2.0 + factor * 3.5;
 
-            ctx.beginPath();
-            ctx.arc(gx, gy, size, 0, Math.PI * 2);
-            ctx.fillStyle = isLightMode
-              ? `rgba(186, 140, 85, ${0.35 + factor * 0.55})`
-              : `rgba(45, 212, 191, ${0.35 + factor * 0.55})`;
-            ctx.fill();
-
-            // Connect nearest grid points to cursor
+            // Connect nearest grid points to cursor with dark, responsive animated lines
             ctx.beginPath();
             ctx.moveTo(gx, gy);
             ctx.lineTo(mouseX, mouseY);
             ctx.strokeStyle = isLightMode
-              ? `rgba(186, 140, 85, ${factor * 0.3})`
-              : `rgba(45, 212, 191, ${factor * 0.3})`;
-            ctx.lineWidth = 0.75;
+              ? `rgba(16, 42, 60, ${0.25 + factor * 0.6})`
+              : `rgba(45, 212, 191, ${factor * 0.35})`;
+            ctx.lineWidth = isLightMode ? 1.0 + factor * 0.8 : 0.85;
             ctx.stroke();
+
+            // Dark grid node point at intersection
+            ctx.beginPath();
+            ctx.arc(gx, gy, size, 0, Math.PI * 2);
+            ctx.fillStyle = isLightMode
+              ? `rgba(16, 42, 60, ${0.55 + factor * 0.45})`
+              : `rgba(45, 212, 191, ${0.35 + factor * 0.55})`;
+            ctx.fill();
           }
         }
+      }
+
+      // 4. Cursor Focal Hub & Pulse Wave
+      if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
+        // Outer subtle magnetic halo
+        ctx.beginPath();
+        ctx.arc(mouseX, mouseY, 16, 0, Math.PI * 2);
+        ctx.strokeStyle = isLightMode
+          ? "rgba(12, 100, 119, 0.35)"
+          : "rgba(45, 212, 191, 0.35)";
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+
+        // Inner magnetic ring
+        ctx.beginPath();
+        ctx.arc(mouseX, mouseY, 7, 0, Math.PI * 2);
+        ctx.strokeStyle = isLightMode
+          ? "rgba(16, 42, 60, 0.6)"
+          : "rgba(45, 212, 191, 0.6)";
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        // Solid central focal dot
+        ctx.beginPath();
+        ctx.arc(mouseX, mouseY, 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = isLightMode ? "#0C6477" : "#2DD4BF";
+        ctx.fill();
       }
 
       animationFrameId = requestAnimationFrame(render);
@@ -248,7 +279,7 @@ export const ParticleBackground: React.FC = () => {
       <div className="absolute bottom-10 left-1/4 w-80 h-80 rounded-full bg-accent-violet/15 blur-3xl pointer-events-none transform-gpu" />
 
       {/* Kinetic Holographic Cyber Grid & Energy Pulse Canvas */}
-      <canvas ref={canvasRef} className="block w-full h-full opacity-80" />
+      <canvas ref={canvasRef} className="block w-full h-full opacity-95" />
     </div>
   );
 };
