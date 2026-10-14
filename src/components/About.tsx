@@ -2,7 +2,14 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { GraduationCap, Briefcase, Code, Terminal, CheckCircle2 } from "lucide-react";
+import {
+  GraduationCap,
+  Layers,
+  Smartphone,
+  MapPin,
+  CheckCircle2,
+  Briefcase,
+} from "lucide-react";
 import { CountUp } from "./ui/CountUp";
 
 export const About: React.FC = () => {
@@ -33,96 +40,170 @@ export const About: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 space-y-6"
           >
-            <div className="p-6 rounded-2xl bg-surface border border-surface-border relative overflow-hidden shadow-sm">
-              <div className="absolute top-0 right-0 p-4 opacity-10">
-                <Terminal className="w-24 h-24 text-accent-cyan" />
+            <div className="p-6 sm:p-8 rounded-2xl bg-surface border border-surface-border relative overflow-hidden shadow-sm">
+              {/* Badge */}
+              <div className="inline-flex items-center space-x-2 text-xs font-mono text-accent-cyan bg-surface-hover border border-surface-border px-3.5 py-1.5 rounded-full mb-5">
+                <span className="w-2 h-2 rounded-full bg-accent-cyan" />
+                <span>Full-Stack &amp; Mobile Engineer</span>
               </div>
 
-              <h3 className="text-xl font-heading font-semibold text-foreground-heading mb-4 flex items-center space-x-2">
-                <Code className="w-5 h-5 text-accent-cyan" />
-                <span>Full-Stack Developer &amp; CS Graduate</span>
+              {/* Lead Headline */}
+              <h3 className="text-2xl sm:text-3xl font-heading font-bold text-foreground-heading leading-snug mb-5">
+                Building production-ready web platforms and mobile apps that scale.
               </h3>
 
-              <p className="text-foreground-muted leading-relaxed text-sm sm:text-base mb-4">
-                I am a Computer Science Graduate from the{" "}
-                <strong className="text-foreground">University of Central Punjab (UCP)</strong> with a passion for architecting responsive, high-performance web and mobile applications.
-              </p>
+              {/* Body Text (Concise, punchy, not wordy) */}
+              <div className="space-y-3.5 text-foreground-muted leading-relaxed text-sm sm:text-base">
+                <p>
+                  Computer Science graduate and <strong className="text-foreground">Full-Stack Developer</strong> with{" "}
+                  <strong className="text-accent-cyan font-medium">1+ year of hands-on experience</strong> building
+                  production-ready applications using{" "}
+                  <strong className="text-foreground">React, Next.js, Node.js, and React Native</strong>.
+                </p>
 
-              <p className="text-foreground-muted leading-relaxed text-sm sm:text-base mb-4">
-                My core experience is in <strong className="text-accent-cyan">MERN Stack and React Native Apps</strong>, along with relative modern tech stacks. I also enjoy integrating Machine Learning models into web systems (such as spam detection and AI-driven influencer analytics).
-              </p>
+                <p>
+                  Experienced in delivering real-world client projects, RESTful APIs, and responsive user interfaces with a solid{" "}
+                  <strong className="text-foreground">MERN stack</strong> foundation across frontend, backend, databases, and mobile.
+                </p>
 
-              {/* "Currently" Badge Line */}
-              <div className="mt-6 pt-4 border-t border-surface-border/80 flex items-start space-x-3 bg-surface-hover/50 p-3 rounded-xl border border-surface-border">
-                <CheckCircle2 className="w-5 h-5 text-accent-emerald shrink-0 mt-0.5" />
-                <p className="text-xs font-mono text-foreground-muted">
-                  <strong className="text-foreground">Currently:</strong> Computer Science Graduate @ UCP, freelancing full-stack web/mobile applications and expanding AI integrations.
+                <p className="text-foreground font-medium pt-1">
+                  Ready to bring strong problem-solving skills and practical development experience to a growth-oriented engineering team.
                 </p>
               </div>
             </div>
           </motion.div>
 
-          {/* Metrics & Stats Right Column */}
+          {/* Right Column: 3 Clean Focus Pillars */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 grid grid-cols-2 gap-4"
+            className="lg:col-span-5 space-y-4"
           >
-            {/* Stat 1: 2+ Years Experience */}
-            <div className="p-6 rounded-2xl bg-surface border border-surface-border flex flex-col justify-between hover:border-accent-indigo/60 transition-colors">
-              <Briefcase className="w-6 h-6 text-accent-indigo mb-4" />
-              <div>
-                <div className="text-3xl sm:text-4xl font-heading font-bold text-foreground-heading text-accent-indigo">
-                  <CountUp end={2} suffix="+" />
+            {/* Pillar 1: Full-Stack Web with MERN & Next.js clearly mentioned */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-surface border border-surface-border hover:border-accent-indigo/60 transition-all duration-300 group">
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 rounded-xl bg-accent-indigo/15 border border-accent-indigo/30 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Layers className="w-5 h-5 text-accent-indigo" />
                 </div>
-                <div className="text-xs font-mono text-foreground-muted mt-1">
-                  Years Experience
-                </div>
-              </div>
-            </div>
-
-            {/* Stat 2: 10+ Projects Done */}
-            <div className="p-6 rounded-2xl bg-surface border border-surface-border flex flex-col justify-between hover:border-accent-cyan/60 transition-colors">
-              <Code className="w-6 h-6 text-accent-cyan mb-4" />
-              <div>
-                <div className="text-3xl sm:text-4xl font-heading font-bold text-foreground-heading text-accent-cyan">
-                  <CountUp end={10} suffix="+" />
-                </div>
-                <div className="text-xs font-mono text-foreground-muted mt-1">
-                  Projects Done
+                <div className="flex-1">
+                  <h4 className="text-base font-heading font-semibold text-foreground-heading mb-1">
+                    Full-Stack Web Development
+                  </h4>
+                  <p className="text-xs text-foreground-muted leading-relaxed mb-3">
+                    Scalable, high-performance web applications built with Next.js App Router, React.js, Node.js, Express, and MongoDB.
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {["Next.js", "React.js", "Node.js", "Express", "MongoDB"].map((t) => (
+                      <span key={t} className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-surface-hover border border-surface-border text-foreground-muted">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Stat 3: 5+ Tech Stacks */}
-            <div className="p-6 rounded-2xl bg-surface border border-surface-border flex flex-col justify-between hover:border-accent-violet/60 transition-colors">
-              <Terminal className="w-6 h-6 text-accent-violet mb-4" />
-              <div>
-                <div className="text-3xl sm:text-4xl font-heading font-bold text-foreground-heading text-accent-violet">
-                  <CountUp end={5} suffix="+" />
+            {/* Pillar 2: Cross-Platform Mobile */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-surface border border-surface-border hover:border-accent-cyan/60 transition-all duration-300 group">
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 rounded-xl bg-accent-cyan/15 border border-accent-cyan/30 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Smartphone className="w-5 h-5 text-accent-cyan" />
                 </div>
-                <div className="text-xs font-mono text-foreground-muted mt-1">
-                  Tech Stacks
+                <div className="flex-1">
+                  <h4 className="text-base font-heading font-semibold text-foreground-heading mb-1">
+                    Mobile App Development
+                  </h4>
+                  <p className="text-xs text-foreground-muted leading-relaxed mb-3">
+                    Cross-platform iOS and Android apps with responsive native performance, intuitive UX, and clean state handling.
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {["React Native", "Expo", "Android SDK", "Firebase"].map((t) => (
+                      <span key={t} className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-surface-hover border border-surface-border text-foreground-muted">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Stat 4: CS Graduated */}
-            <div className="p-6 rounded-2xl bg-surface border border-surface-border flex flex-col justify-between hover:border-accent-emerald/60 transition-colors">
-              <GraduationCap className="w-6 h-6 text-accent-emerald mb-4" />
-              <div>
-                <div className="text-xl sm:text-2xl font-heading font-bold text-foreground-heading text-accent-emerald">
-                  Graduated
+            {/* Pillar 3: Backend & Client Delivery */}
+            <div className="about-pillar-3 p-5 sm:p-6 rounded-2xl bg-surface border border-surface-border hover:border-accent-emerald/60 transition-all duration-300 group">
+              <div className="flex items-start space-x-4">
+                <div className="about-pillar-3-icon w-10 h-10 rounded-xl bg-accent-emerald/15 border border-accent-emerald/30 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Briefcase className="w-5 h-5 text-accent-emerald" />
                 </div>
-                <div className="text-xs font-mono text-foreground-muted mt-1">
-                  BS CS @ UCP
+                <div className="flex-1">
+                  <h4 className="text-base font-heading font-semibold text-foreground-heading mb-1">
+                    Client Delivery &amp; Backend
+                  </h4>
+                  <p className="text-xs text-foreground-muted leading-relaxed mb-3">
+                    Proven record shipping real commercial websites, RESTful APIs, and database solutions for live businesses and startups.
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {["REST APIs", "Supabase", "PostgreSQL", "Tailwind CSS"].map((t) => (
+                      <span key={t} className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-surface-hover border border-surface-border text-foreground-muted">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </motion.div>
         </div>
+
+        {/* Bottom Key Strengths Strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4"
+        >
+          <div className="p-4 sm:p-5 rounded-2xl bg-surface border border-surface-border flex items-center space-x-3.5">
+            <div className="text-2xl sm:text-3xl font-heading font-bold text-accent-indigo">
+              <CountUp end={1} suffix="+" />
+            </div>
+            <div className="text-xs">
+              <p className="font-semibold text-foreground">Year Experience</p>
+              <p className="text-foreground-muted text-[11px]">Production &amp; client work</p>
+            </div>
+          </div>
+
+          <div className="p-4 sm:p-5 rounded-2xl bg-surface border border-surface-border flex items-center space-x-3.5">
+            <div className="text-2xl sm:text-3xl font-heading font-bold text-accent-cyan">
+              <CountUp end={100} suffix="%" />
+            </div>
+            <div className="text-xs">
+              <p className="font-semibold text-foreground">Production Focus</p>
+              <p className="text-foreground-muted text-[11px]">Clean, maintainable code</p>
+            </div>
+          </div>
+
+          {/* Replaced Full Lifecycle with Lahore, Pakistan as requested */}
+          <div className="p-4 sm:p-5 rounded-2xl bg-surface border border-surface-border flex items-center space-x-3.5">
+            <div className="w-9 h-9 rounded-xl bg-accent-violet/15 flex items-center justify-center shrink-0">
+              <MapPin className="w-5 h-5 text-accent-violet" />
+            </div>
+            <div className="text-xs">
+              <p className="font-semibold text-foreground">Lahore, Pakistan</p>
+              <p className="text-foreground-muted text-[11px]">Available Remote &amp; On-Site</p>
+            </div>
+          </div>
+
+          <div className="p-4 sm:p-5 rounded-2xl bg-surface border border-surface-border flex items-center space-x-3.5">
+            <div className="about-metric-icon w-9 h-9 rounded-xl bg-accent-emerald/15 flex items-center justify-center shrink-0">
+              <GraduationCap className="w-5 h-5 text-accent-emerald" />
+            </div>
+            <div className="text-xs">
+              <p className="font-semibold text-foreground">BS Comp Science</p>
+              <p className="text-foreground-muted text-[11px]">Univ. of Central Punjab (UCP)</p>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

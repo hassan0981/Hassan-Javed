@@ -21,7 +21,7 @@ const config: Config = {
       highlight: "var(--color-surface-highlight)",
     },
     accent: {
-      indigo: "#1E4E6B",
+      indigo: "var(--color-accent-indigo, #1E4E6B)",
       cyan: "var(--color-accent-cyan)",
       violet: "var(--color-accent-violet)",
       emerald: "#34D399",

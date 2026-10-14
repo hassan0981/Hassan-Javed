@@ -43,7 +43,7 @@ export const Contact: React.FC = () => {
       if (res.ok && data.success) {
         setStatus("success");
         setFormData({ name: "", email: "", subject: "", message: "" });
-        
+
         // Trigger celebration confetti
         try {
           confetti({
@@ -133,8 +133,8 @@ export const Contact: React.FC = () => {
               </a>
 
               <div className="flex items-center space-x-4 p-4 rounded-xl bg-surface border border-surface-border">
-                <div className="p-3 rounded-lg bg-surface-hover text-accent-emerald">
-                  <MapPin className="w-5 h-5" />
+                <div className="p-3 rounded-lg bg-surface-hover">
+                  <MapPin className="contact-mappin-icon w-5 h-5 text-accent-emerald" />
                 </div>
                 <div>
                   <div className="text-xs font-mono text-foreground-muted">Location</div>
@@ -148,7 +148,7 @@ export const Contact: React.FC = () => {
             {/* Social Links */}
             <div className="pt-2">
               <div className="text-xs font-mono text-foreground-muted mb-3">Connect on Socials</div>
-              <div className="flex items-center space-x-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <a
                   href="https://github.com/hassan0981"
                   target="_blank"
@@ -179,7 +179,7 @@ export const Contact: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7"
           >
-            <div className="p-8 rounded-2xl bg-surface border border-surface-border shadow-card-hover relative">
+            <div className="p-5 sm:p-8 rounded-2xl bg-surface border border-surface-border shadow-card-hover relative">
               <h4 className="text-lg font-heading font-bold text-foreground-heading mb-6">
                 Send A Direct Message
               </h4>
@@ -280,9 +280,9 @@ export const Contact: React.FC = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0 }}
-                      className="p-4 rounded-xl bg-accent-emerald/10 border border-accent-emerald/40 text-accent-emerald flex items-center space-x-3 text-xs font-mono"
+                      className="p-4 rounded-xl bg-surface border border-accent-cyan/50 text-foreground flex items-center space-x-3 text-xs font-mono shadow-sm"
                     >
-                      <CheckCircle2 className="w-5 h-5 shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-accent-cyan shrink-0" />
                       <span>Message sent successfully! I will respond to your email shortly.</span>
                     </motion.div>
                   )}

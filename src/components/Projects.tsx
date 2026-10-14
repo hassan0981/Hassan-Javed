@@ -33,7 +33,7 @@ export const Projects: React.FC = () => {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent-cyan" />
             </span>
             <Play className="w-3.5 h-3.5 text-accent-cyan fill-current" />
-            <span>Click &quot;Watch Demo&quot; on any card to view video walkthrough</span>
+            <span>Click any card to watch video walkthrough &amp; architecture breakdown</span>
           </div>
         </motion.div>
 

@@ -18,48 +18,55 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [theme, setTheme] = useState<"dark" | "light">("light");
 
   useEffect(() => {
-    // Sync stored theme preference (Default is dark mode)
+    // Sync stored theme preference (Default is bright/light mode)
     const savedTheme = localStorage.getItem("theme") as "dark" | "light" | null;
-    if (savedTheme === "light") {
-      setTheme("light");
-      document.documentElement.classList.add("light");
-    } else {
+    if (savedTheme === "dark") {
       setTheme("dark");
       document.documentElement.classList.remove("light");
+    } else {
+      setTheme("light");
+      document.documentElement.classList.add("light");
     }
 
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = window.scrollY > 40;
+          setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
 
-      // Section highlight logic
-      const sections = navLinks.map((link) => link.href.substring(1));
-      const scrollPosition = window.scrollY + 200;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sectionEl = document.getElementById(sections[i]);
-        if (sectionEl && sectionEl.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
-          break;
-        }
+          const scrollPosition = window.scrollY + 200;
+          for (let i = navLinks.length - 1; i >= 0; i--) {
+            const id = navLinks[i].href.substring(1);
+            const sectionEl = document.getElementById(id);
+            if (sectionEl && sectionEl.offsetTop <= scrollPosition) {
+              setActiveSection((prev) => (prev !== id ? id : prev));
+              break;
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleTheme = () => {
-    if (theme === "dark") {
-      setTheme("light");
-      document.documentElement.classList.add("light");
-      localStorage.setItem("theme", "light");
-    } else {
+    if (theme === "light") {
       setTheme("dark");
       document.documentElement.classList.remove("light");
       localStorage.setItem("theme", "dark");
+    } else {
+      setTheme("light");
+      document.documentElement.classList.add("light");
+      localStorage.setItem("theme", "light");
     }
   };
 
@@ -123,9 +130,9 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Right CTA Area: Available Dot, Theme Switcher & Contact Button */}
-        <div className="hidden lg:flex items-center space-x-3">
+        <div className="hidden md:flex items-center space-x-3">
           {/* Available status pill */}
-          <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-surface/80 border border-surface-border text-xs font-mono text-foreground-muted shadow-sm">
+          <div className="nav-available-pill inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-surface/80 border border-surface-border text-xs font-mono text-foreground-muted shadow-sm">
             <span className="w-2 h-2 rounded-full bg-accent-emerald animate-pulse" />
             <span>Available for work</span>
           </div>
@@ -134,7 +141,7 @@ export const Navbar: React.FC = () => {
           <button
             onClick={toggleTheme}
             className="p-2.5 rounded-full bg-surface border border-surface-border text-foreground-muted hover:text-accent-cyan hover:border-accent-cyan/60 transition-all shadow-sm flex items-center justify-center group"
-            title={theme === "dark" ? "Switch to Light Theme" : "Switch to Dark Theme (Default)"}
+            title={theme === "light" ? "Switch to Dark Theme" : "Switch to Bright Theme (Default)"}
             aria-label="Toggle Theme"
           >
             {theme === "dark" ? (
@@ -162,7 +169,7 @@ export const Navbar: React.FC = () => {
           <button
             onClick={toggleTheme}
             className="p-2 rounded-xl bg-surface border border-surface-border text-foreground-muted hover:text-accent-cyan transition-colors"
-            title={theme === "dark" ? "Switch to Light Theme" : "Switch to Dark Theme (Default)"}
+            title={theme === "light" ? "Switch to Dark Theme" : "Switch to Bright Theme (Default)"}
             aria-label="Toggle Theme"
           >
             {theme === "dark" ? (
@@ -189,15 +196,23 @@ export const Navbar: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-surface/95 backdrop-blur-xl border-b border-surface-border px-4 pt-4 pb-6 mt-2"
+            className="md:hidden bg-surface/95 backdrop-blur-xl border-b border-surface-border px-4 pt-3 pb-6 mt-2 shadow-2xl"
           >
-            <div className="flex flex-col space-y-3 font-mono text-sm">
+            <div className="flex flex-col space-y-2.5 font-mono text-sm">
+              <div className="flex items-center justify-between pb-2.5 mb-1 border-b border-surface-border/40">
+                <div className="nav-available-pill inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-surface-hover border border-surface-border text-xs font-mono text-foreground-muted">
+                  <span className="w-2 h-2 rounded-full bg-accent-emerald animate-pulse" />
+                  <span>Available for work</span>
+                </div>
+                <span className="text-[11px] font-mono text-accent-cyan">Lahore, PK</span>
+              </div>
+
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-surface-hover/80 text-foreground-muted hover:text-accent-cyan transition-colors border-b border-surface-border/30"
+                  className="flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-surface-hover text-foreground-muted hover:text-accent-cyan transition-colors border-b border-surface-border/30"
                 >
                   <span className="font-heading font-medium text-foreground">
                     {link.label}

@@ -1,99 +1,103 @@
 export interface SkillItem {
   name: string;
-  level: "Intermediate" | "Beginner";
   iconName?: string;
 }
 
-export interface SkillCategoryCard {
+export interface SkillPillar {
   id: string;
   title: string;
+  domainFocus: string;
   iconName: string;
   accentColor: string;
   skills: SkillItem[];
   projectHighlight: string;
 }
 
-export const skillCategoryCards: SkillCategoryCard[] = [
+export const marqueeSkills = [
+  { name: "Next.js", iconName: "SiNextdotjs" },
+  { name: "React.js", iconName: "SiReact" },
+  { name: "React Native", iconName: "SiReact" },
+  { name: "TypeScript", iconName: "SiTypescript" },
+  { name: "Node.js", iconName: "SiNodedotjs" },
+  { name: "Express.js", iconName: "SiExpress" },
+  { name: "MongoDB", iconName: "SiMongodb" },
+  { name: "MySQL", iconName: "SiMysql" },
+  { name: "Supabase", iconName: "SiSupabase" },
+  { name: "Tailwind CSS", iconName: "SiTailwindcss" },
+  { name: "Firebase", iconName: "SiFirebase" },
+  { name: "JavaScript", iconName: "SiJavascript" },
+  { name: "Java", iconName: "SiJava" },
+  { name: "Git", iconName: "SiGit" },
+  { name: "GitHub", iconName: "SiGithub" },
+  { name: "C++", iconName: "SiCplusplus" },
+];
+
+export const skillPillars: SkillPillar[] = [
   {
-    id: "programming-languages",
-    title: "Programming Languages",
-    iconName: "Code",
-    accentColor: "#38BDF8",
-    skills: [
-      { name: "C++", level: "Intermediate", iconName: "SiCplusplus" },
-      { name: "JavaScript", level: "Intermediate", iconName: "SiJavascript" },
-      { name: "TypeScript", level: "Intermediate", iconName: "SiTypescript" },
-    ],
-    projectHighlight: "DSA & Speed Programming 2025",
-  },
-  {
-    id: "frontend-development",
-    title: "Front-end Development",
+    id: "frontend-architecture",
+    title: "Frontend & Client Architecture",
+    domainFocus: "High-performance SSR, App Router & reactive component systems",
     iconName: "Cpu",
     accentColor: "#22D3EE",
     skills: [
-      { name: "HTML/CSS", level: "Intermediate", iconName: "SiHtml5" },
-      { name: "JavaScript", level: "Intermediate", iconName: "SiJavascript" },
-      { name: "Tailwind CSS", level: "Intermediate", iconName: "SiTailwindcss" },
-      { name: "React.js", level: "Intermediate", iconName: "SiReact" },
-      { name: "Next.js", level: "Intermediate", iconName: "SiNextdotjs" },
-      { name: "React Native", level: "Intermediate", iconName: "SiReact" },
-      { name: "Responsive UI", level: "Intermediate" },
+      { name: "Next.js (App Router)", iconName: "SiNextdotjs" },
+      { name: "React.js", iconName: "SiReact" },
+      { name: "TypeScript", iconName: "SiTypescript" },
+      { name: "Tailwind CSS", iconName: "SiTailwindcss" },
+      { name: "JavaScript (ES6+)", iconName: "SiJavascript" },
+      { name: "HTML5 / Modern CSS", iconName: "SiHtml5" },
+      { name: "Responsive UI Architecture" },
     ],
-    projectHighlight: "BouncyDigital & Mashhoor Platform",
-  },
-  {
-    id: "backend-databases",
-    title: "Backend & Databases",
-    iconName: "Server",
-    accentColor: "#1E4E6B",
-    skills: [
-      { name: "Node.js", level: "Intermediate", iconName: "SiNodedotjs" },
-      { name: "Express.js", level: "Intermediate", iconName: "SiExpress" },
-      { name: "RESTful APIs", level: "Intermediate" },
-      { name: "MongoDB", level: "Intermediate", iconName: "SiMongodb" },
-      { name: "MySQL", level: "Intermediate", iconName: "SiMysql" },
-      { name: "Firebase/Firestore", level: "Intermediate", iconName: "SiFirebase" },
-      { name: "Supabase", level: "Beginner", iconName: "SiSupabase" },
-    ],
-    projectHighlight: "Mashhoor AI Engine & Supabase DB",
-  },
-  {
-    id: "web-stacks",
-    title: "Web Development / Stacks",
-    iconName: "Layers",
-    accentColor: "#34D399",
-    skills: [
-      { name: "MERN Stack", level: "Intermediate" },
-      { name: "WordPress", level: "Intermediate", iconName: "SiWordpress" },
-      { name: "Full-Stack Development", level: "Intermediate" },
-    ],
-    projectHighlight: "AgnTaxConsultant.pk Corporate Site",
+    projectHighlight: "Powering BouncyDigital & Mashhoor Platform",
   },
   {
     id: "mobile-development",
     title: "Mobile App Development",
+    domainFocus: "Cross-platform iOS & Android applications with native responsiveness",
     iconName: "Smartphone",
     accentColor: "#A78BFA",
     skills: [
-      { name: "React Native", level: "Intermediate", iconName: "SiReact" },
-      { name: "Expo", level: "Intermediate", iconName: "SiExpo" },
-      { name: "React Navigation", level: "Intermediate" },
-      { name: "Push Notifications", level: "Intermediate" },
-      { name: "Java", level: "Intermediate", iconName: "SiJava" },
-      { name: "Firebase", level: "Intermediate", iconName: "SiFirebase" },
+      { name: "React Native", iconName: "SiReact" },
+      { name: "Expo", iconName: "SiExpo" },
+      { name: "Android SDK" },
+      { name: "React Navigation" },
+      { name: "Firebase Mobile", iconName: "SiFirebase" },
+      { name: "Push Notifications & Offline Sync" },
+      { name: "Java", iconName: "SiJava" },
     ],
-    projectHighlight: "ACME One Office Management App",
+    projectHighlight: "ACME One Office Management & AR Initiatives",
   },
   {
-    id: "tools-version-control",
-    title: "Tools & Version Control",
-    iconName: "Wrench",
-    accentColor: "#F472B6",
+    id: "backend-apis",
+    title: "Backend & API Engineering",
+    domainFocus: "Structured services, business logic & secure data flow",
+    iconName: "Server",
+    accentColor: "#38BDF8",
     skills: [
-      { name: "Git", level: "Intermediate", iconName: "SiGit" },
-      { name: "GitHub", level: "Intermediate", iconName: "SiGithub" },
+      { name: "Node.js", iconName: "SiNodedotjs" },
+      { name: "Express.js", iconName: "SiExpress" },
+      { name: "RESTful API Design" },
+      { name: "MERN Stack Architecture" },
+      { name: "Authentication & Security" },
+      { name: "C++ (DSA & Problem Solving)", iconName: "SiCplusplus" },
     ],
-    projectHighlight: "Version Control & CI/CD Pipelines",
+    projectHighlight: "Mashhoor AI Engine & Production Microservices",
+  },
+  {
+    id: "databases-devops",
+    title: "Databases, Cloud & Tooling",
+    domainFocus: "Relational & NoSQL schemas, cloud services & version control",
+    iconName: "Database",
+    accentColor: "#34D399",
+    skills: [
+      { name: "MongoDB", iconName: "SiMongodb" },
+      { name: "MySQL", iconName: "SiMysql" },
+      { name: "Supabase (PostgreSQL)", iconName: "SiSupabase" },
+      { name: "Firebase / Firestore", iconName: "SiFirebase" },
+      { name: "Git", iconName: "SiGit" },
+      { name: "GitHub Workflows", iconName: "SiGithub" },
+      { name: "WordPress", iconName: "SiWordpress" },
+    ],
+    projectHighlight: "AgnTaxConsultant.pk & Client Database Infrastructure",
   },
 ];
